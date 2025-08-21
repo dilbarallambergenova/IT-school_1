@@ -18,12 +18,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.views.generic.base import TemplateView
+from apps.accounts.views import custom_logout  
+
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('accounts/',include('apps.accounts.urls')),
-    path('',include('apps.student.urls')),
-    path('accounts/',include('django.contrib.auth.urls')),
-  
-    
+    path("accounts/logout/", custom_logout, name="logout"),
+    path("accounts/", include("django.contrib.auth.urls")),  # avval
+    path("accounts/", include("apps.accounts.urls")),       # keyin
+    path("", include("apps.student.urls")),
 ]

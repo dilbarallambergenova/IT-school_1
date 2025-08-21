@@ -1,12 +1,57 @@
-
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% block title %}Kirish{% endblock title %}
+{% load crispy_forms_tags %}   {# crispy filter ishlashi uchun kerak #}
+
+{% block title %}Saytga kirish{% endblock title %}
 
 {% block content %}
-    <h2>Saytga kirish</h2>
-    <form method="post">{% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-primary">Kirish</button>
-    </form>
+<style>
+  body {
+      background-color: #f3f5f7 !important; /* orqa fon */
+  }
+  .form-control {
+      padding: 10px 12px;
+      font-size: 16px;
+      border-radius: 8px;
+  }
+  .form-check-label {
+      font-size: 15px;
+  }
+</style>
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-sm p-4 rounded-3" style="max-width: 400px; width: 100%; border: 1px solid #e5e7eb;">
+        
+        <!-- Sarlavha -->
+        <h2 class="text-center fw-bold mb-2">IT school</h2>
+        <p class="text-center text-muted mb-4">Maktab axborot tizimi</p>
+        
+        <!-- Forma -->
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="remember">
+                <label class="form-check-label" for="remember">Eslab qolish</label>
+            </div>
+
+            <button class="btn w-100 text-white fw-semibold" type="submit" 
+                style="background-color: #2d8ccc; font-size: 18px;">
+                Kirish
+            </button>
+        </form>
+
+        <!-- Parolni unutdingizmi -->
+        <div class="mt-3 text-center">
+            <a href="{% url 'password_reset' %}" class="text-decoration-none" style="color: #6d5ce7;">
+                Login yoki parolni unutdingizmi?
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock content %}
+
+
+
+
+

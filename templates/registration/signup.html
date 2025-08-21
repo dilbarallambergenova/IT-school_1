@@ -1,11 +1,55 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+
 {% block title %}Ro'yxatdan o'tish{% endblock title %}
 
 {% block content %}
-    <h2>Ro'yxatdan o'tish</h2>
-    <form method="post">{% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-success">Yuborish</button>
-    </form>
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <div class="card shadow-lg border-0 rounded-3" style="max-width: 600px; width: 100%;">
+       <div class="card-header text-white text-center rounded-top" 
+           style="background-color:  #2d8ccc!important;">
+          <h3 class="mb-0">Ro'yxatdan o'tish</h3>
+       </div>
+
+        <div class="card-body p-4">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+
+                <hr class="my-4">
+                <h5 class="mb-3 text-primary fw-bold text-center">Qo'shimcha ma'lumotlar</h5>
+
+                <div class="mb-3">
+                    <label for="father_name" class="form-label fw-semibold">Otasining ismi</label>
+                    <input type="text" class="form-control" id="father_name" name="father_name" placeholder="Otasining ism-familiyasi">
+                </div>
+
+                <div class="mb-3">
+                    <label for="father_phone" class="form-label fw-semibold">Otasining telefon raqami</label>
+                    <input type="text" class="form-control" id="father_phone" name="father_phone" placeholder="+998 ** *** ** **">
+                </div>
+
+                <div class="mb-3">
+                    <label for="mother_name" class="form-label fw-semibold">Onasining ismi</label>
+                    <input type="text" class="form-control" id="mother_name" name="mother_name" placeholder="Onasining ism-familiyasi">
+                </div>
+
+                <div class="mb-3">
+                    <label for="mother_phone" class="form-label fw-semibold">Onasining telefon raqami</label>
+                    <input type="text" class="form-control" id="mother_phone" name="mother_phone" placeholder="+998 ** *** ** **">
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        Yuborish
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
+
+
+
+
