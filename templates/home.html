@@ -1,24 +1,51 @@
 {% extends 'base.html' %}
-{% block title %}Bosh sahifa{% endblock title %}
+{% block title %}Maktab Tizimi{% endblock title %}
 
 {% block content %}
 <div class="container mt-5">
     {% if user.is_authenticated %}
-      <div class="card shadow-lg p-4 text-center">
-         <h3 class="text-success">Xush kelibsiz, {{ user.username }}!</h3>
-         <p class="mt-3">
-         </p>
-       </div>
-
+        <div class="card shadow-lg p-4 text-center border-0" style="border-radius: 15px; background: linear-gradient(135deg, #e3f2fd, #ffffff);">
+            <h2 class="text-success fw-bold">🎓 Xush kelibsiz, {{ user.username }}!</h2>
+            <p class="mt-3 text-muted">
+                Siz hozirda <strong>IT School Portal</strong> tizimidasiz. 
+                Profilingizdan darslar, baholar va yangiliklarni ko‘rishingiz mumkin.
+            </p>
+        </div>
     {% else %}
-        <div class="card shadow-lg p-4 text-center">
-            <h2 class="text-primary">IT school portaliga xush kelibsiz!</h2>
-            <p class="text-muted mt-2">Davom etish uchun tizimga kiring yoki ro'yxatdan o'ting.</p>
-            <div class="mt-3">
-                <a href="{% url 'login' %}" class="btn btn-success" >Kirish</a>
-                <a href="{% url 'signup' %}" class="btn btn-primary">Ro'yxatdan o'tish</a>
+        <div class="card shadow-lg p-5 text-center border-0" style="border-radius: 15px; background: linear-gradient(135deg, #f8f9fa, #ffffff);">
+            <h2 class="text-primary fw-bold">🎓 IT School Portaliga Xush kelibsiz!</h2>
+            <p class="text-muted mt-3">
+                Ushbu tizim orqali <strong>dars jadvali</strong>, <strong>baholar</strong>, 
+                <strong>uy vazifalari</strong> va <strong>yangiliklar</strong>ni kuzatib boring.
+            </p>
+            <div class="mt-4">
+                <a href="{% url 'login' %}" class="btn btn-success btn-lg px-4 me-3">🔑 Kirish</a>
+                <a href="{% url 'signup' %}" class="btn btn-primary btn-lg px-4">📝 Ro‘yxatdan o‘tish</a>
             </div>
         </div>
     {% endif %}
+</div>
+
+<!-- Pastki qism -->
+<div class="container mt-5">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0 p-3 h-100">
+                <h4 class="text-primary">📅 Dars Jadvali</h4>
+                <p class="text-muted">Kunlik va haftalik darslaringizni kuzatib boring.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0 p-3 h-100">
+                <h4 class="text-success">📊 Baholar</h4>
+                <p class="text-muted">O‘quv yutuqlaringizni ko‘rib boring va nazorat qiling.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0 p-3 h-100">
+                <h4 class="text-warning">📰 Yangiliklar</h4>
+                <p class="text-muted">Maktabdagi so‘nggi yangiliklar va e’lonlardan xabardor bo‘ling.</p>
+            </div>
+    </div>
 </div>
 {% endblock content %}
